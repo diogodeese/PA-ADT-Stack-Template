@@ -1,0 +1,26 @@
+# Ignore compiled Java files
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+
+# Ignore build directories
+/out/
+build/
+target/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+
+# Exclude Maven/Gradle dependencies cache
+.mvn/
+.gradle/

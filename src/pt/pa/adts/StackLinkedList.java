@@ -15,42 +15,58 @@ public class StackLinkedList<T> implements Stack<T> {
         this.size = 0;
     }
 
+    /*
+     * Inserts a new element at the top of the stack.
+     * Time complexity: O(1) - constant time to insert a new node.
+     */
     @Override
     public void push(T element) throws FullStackException {
         /*
         Element should be stored in a new node which is pointed by top sentinel.
         Must maintain the chaining of all nodes.
          */
-        throw new UnsupportedOperationException("This method is not implemented yet.");
+
+        top.next = new Node(element, top.next);
+        size++;
     }
 
+    /*
+     * Removes and returns the top element of the stack.
+     * Time complexity: O(1) - constant time to remove a node and adjust the link.
+     */
     @Override
     public T pop() throws EmptyStackException {
         /*
         The element at the top of the stack is the element stored in the
         node immediately after the top sentinel.
          */
-     throw new UnsupportedOperationException("This method is not implemented yet.");
+
+        Node node = top;
+        top = null;
+        size--;
+
+        return node.element;
     }
 
     @Override
     public T peek() throws EmptyStackException {
-     throw new UnsupportedOperationException("This method is not implemented yet.");
+        return top.element;
     }
 
     @Override
     public int size() {
-      throw new UnsupportedOperationException("This method is not implemented yet.");
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-   throw new UnsupportedOperationException("This method is not implemented yet.");
+        return top.element == null;
     }
 
     @Override
     public void clear() {
-       throw new UnsupportedOperationException("This method is not implemented yet.");
+        top = null;
+        size = 0;
     }
 
     /**

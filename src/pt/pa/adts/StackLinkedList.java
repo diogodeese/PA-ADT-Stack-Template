@@ -69,8 +69,8 @@ public class StackLinkedList<T> implements Stack<T> {
      * Only recognized in the context of this class (private).
      */
     private class Node {
-        private T element;
-        private Node next;
+        final private T element;
+        final private Node next;
 
         public Node(T element, Node next) {
             this.element = element;

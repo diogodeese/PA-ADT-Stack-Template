@@ -1,9 +1,8 @@
 package pt.pa.adts;
 
-
 public class StackLinkedList<T> implements Stack<T> {
 
-    private Node top; //sentinel of linked list
+    private Node top; // sentinel of linked list
     private int size;
 
     public StackLinkedList() {
@@ -21,13 +20,9 @@ public class StackLinkedList<T> implements Stack<T> {
      */
     @Override
     public void push(T element) throws FullStackException {
-        /*
-        Element should be stored in a new node which is pointed by top sentinel.
-        Must maintain the chaining of all nodes.
-         */
-
-        top.next = new Node(element, top.next);
+        top = new Node(element, top);
         size++;
+        System.out.println("New Element: " + element);
     }
 
     /*
@@ -36,20 +31,20 @@ public class StackLinkedList<T> implements Stack<T> {
      */
     @Override
     public T pop() throws EmptyStackException {
-        /*
-        The element at the top of the stack is the element stored in the
-        node immediately after the top sentinel.
-         */
-
-        Node node = top;
-        top = null;
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        T element = top.element;
+        top = top.next;
         size--;
-
-        return node.element;
+        return element;
     }
 
     @Override
     public T peek() throws EmptyStackException {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
         return top.element;
     }
 
@@ -60,7 +55,7 @@ public class StackLinkedList<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return top.element == null;
+        return size == 0;
     }
 
     @Override
